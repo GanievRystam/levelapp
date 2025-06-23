@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import ProfileElement from './components/ProfileElement/ProfileElement';
 import ProgressSkill from './components/ProgressSkill/ProgressSkill';
 import Quest from './components/Quest/Quest';
 import Spheres from './components/Spheres/Spheres';
@@ -78,7 +77,7 @@ function HomeScreen() {
   return (
     <View style={styles.container}>
 
-      <ProfileElement label={currentSphere.label}/>
+      
         
       <Spheres spheres={spheres} activeTab={activeTab} onTabChange={activeTabHandler}/>
         

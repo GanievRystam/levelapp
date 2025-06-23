@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   statLabel: {
     color: '#e0e0e0', // Светлый текст для названия
     fontSize: 14,
-    marginBottom: 4,
+    marginBottom: 10,
     textTransform: 'capitalize', // Аниме-стиль для названий
   },
   progressBarContainer: {
@@ -30,8 +30,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#333', // Темный фон контейнера
     borderRadius: 6,
     overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: '#ff9f43', // Оранжевая рамка для акцента
   },
   progressBar: {
     height: '100%',

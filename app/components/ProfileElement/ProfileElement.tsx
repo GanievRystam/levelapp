@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { Link } from 'expo-router';
+import { useEffect, useState } from "react";
 import { Animated, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Sidebar from "../Sidebar/Sidebar";
 
@@ -9,15 +10,18 @@ type ProfileElementProps = {
 function ProfileElement({label}: ProfileElementProps) {
  const [isMenuOpen, setIsMenuOpen] = useState(false); // Извлекаем значение из useState
   const menuWidth = useState(new Animated.Value(0))[0];
-  console.log('Initial menuWidth:', typeof menuWidth); // Отладка
+  console.log('menuWidth', menuWidth)
+  console.log('isMenuOpen', isMenuOpen)
+  useEffect(() => {
+      Animated.timing(menuWidth, {
+        toValue: isMenuOpen ? 0 : -300 ,
+        duration: 300,
+        useNativeDriver: false,
+      }).start();
+    }, [isMenuOpen, menuWidth]);
+
   const handleImagePress = () => {
-    console.log('Image pressed'); // Отладка
-    setIsMenuOpen(!isMenuOpen);
-    Animated.timing(menuWidth, {
-      toValue: isMenuOpen ? -300 : 0, 
-      duration: 300,
-      useNativeDriver: false,
-    }).start()
+    setIsMenuOpen(!isMenuOpen); // Переключаем состояние
   };
     return (
     <>
@@ -32,8 +36,25 @@ function ProfileElement({label}: ProfileElementProps) {
                 <Text style={styles.name}>Akira Yamada</Text>
                 <Text style={styles.level}>Level 23</Text>
             </View>
+             <View style={styles.navButtons}>
+          <Link href="/" asChild>
+          <TouchableOpacity style={styles.navButton}>
+            <Text style={styles.navText}>Главная</Text>
+          </TouchableOpacity>
+        </Link>
+        <Link href="/" asChild>
+          <TouchableOpacity style={styles.navButton}>
+            <Text style={styles.navText}>Путь Героя</Text>
+          </TouchableOpacity>
+        </Link>
+        <Link href="/screens/CharacterScreen" asChild>
+          <TouchableOpacity style={styles.navButton}>
+            <Text style={styles.navText}>Персонаж</Text>
+          </TouchableOpacity>
+        </Link>
+      </View>
         </View>
-        <Text style={styles.cardTitle}>{label}</Text>
+       
         <Sidebar openClose = {handleImagePress} menuWidth={menuWidth}/>
         
     </>
@@ -46,8 +67,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#1a1a2e', // Темный фон, как в sidebar
     padding: 16,
     borderBottomWidth: 2,
-    borderBottomColor: '#ff6b6b', // Яркая рамка для RPG-стиля
-    marginBottom: 10,
   },
   avatar: {
     width: 64,
@@ -76,6 +95,20 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingLeft: 16,
     letterSpacing: 1,
+  },
+  navButtons: {
+    flexDirection: 'row',
+    marginLeft: 'auto', // Сдвигает кнопки вправо
+  },
+  navButton: {
+    padding: 8,
+    marginLeft: 10,
+    backgroundColor: '#ff9f43',
+    borderRadius: 5,
+  },
+  navText: {
+    color: '#fff',
+    fontSize: 14,
   },
 });
 

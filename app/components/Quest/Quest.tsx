@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 
 questCard: {
     backgroundColor: '#2c2c3e', // Темный фон с аниме-оттенком
-    padding: 12,
+    
     maxHeight: 250, // Ограничение высоты для карточки
     borderRadius: 12,
     marginRight: 10,
@@ -44,15 +44,15 @@ questCard: {
     elevation: 5,
   },
   avatar: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    borderWidth: 2,
-    borderColor: '#ff9f43', // Оранжевая рамка для аватара
-    marginRight: 10,
+    width: '100%',
+    height: 100,
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
   },
   questContent: {
     flex: 1,
+    width: '100%',
+    padding: 10,
   },
   questTitle: {
     color: '#ff6b6b', // Яркий красный для названия

@@ -45,9 +45,9 @@ const Sidebar = ({openClose, menuWidth}:SidebarProps) => {
 }
 const styles = StyleSheet.create({
     menu: {
-        position: 'absolute',
+        position: 'fixed',
         top: 0,
-        left: 0,
+        left: -300,
         height: '100%',
         backgroundColor: '#fff',
         elevation: 25,
