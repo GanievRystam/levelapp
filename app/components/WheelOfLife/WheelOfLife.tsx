@@ -19,7 +19,7 @@ const WheelOfLife = () => {
   const scaleValue = new Animated.Value(1);
 
   const spheres: Spheres = {
-    Здоровье: { progress: 70, icon: 'heart', aspects: ['Сила', 'Выносливость', 'Гибкость'] },
+    Здоровье: { progress: 70, icon: 'heart', aspects: ['Физическая подготовка', 'Стойка на руках', 'Отжимание на одной руке'] },
     Отношения: { progress: 50, icon: 'people', aspects: ['Друзья', 'Семья', 'Любовь'] },
     Финансы: { progress: 40, icon: 'cash', aspects: ['Доход', 'Сбережения', 'Инвестиции'] },
     Карьера: { progress: 60, icon: 'briefcase', aspects: ['Навыки', 'Рост'] },

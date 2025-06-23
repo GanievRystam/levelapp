@@ -1,4 +1,5 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { useRouter } from "expo-router";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 type QuestProps = {
     key: number;
@@ -7,6 +8,7 @@ type QuestProps = {
     completed: boolean;
 }
 const Quest = ({key, name, description, completed}:QuestProps) => {
+  const router = useRouter();
     return(
         <View key={key} style={styles.questCard}>
             <Image
@@ -20,6 +22,9 @@ const Quest = ({key, name, description, completed}:QuestProps) => {
                     <Text style={styles.questDescription}>Статус: В процессе</Text>
                     <Text style={styles.questDescription}>Награда: 1000 опыта</Text>    
                 </View>
+                <TouchableOpacity>
+                  <Text style={styles.questButtonText} onPress={() => router.push({pathname: '/screens/QuestPage', params: {key, name, description}, })}>Открыть квест</Text>
+              </TouchableOpacity>
             </View>
         </View>
     )
@@ -42,6 +47,10 @@ questCard: {
     shadowOpacity: 0.3,
     shadowRadius: 4,
     elevation: 5,
+  },
+  questButtonText: {
+    color: '#fff',
+    fontSize: 16,
   },
   avatar: {
     width: '100%',

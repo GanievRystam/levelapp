@@ -10,28 +10,20 @@ interface Stat {
 const StatsPanel = () => {
   const stats: Stat[] = [
     { name: 'Интеллект', value: 25 },
-    { name: 'Физическая подготовка', value: 30 },
-    { name: 'Здоровье', value: 20 },
+    { name: 'Сила', value: 30 },
+    { name: 'Выносливость', value: 30 },
+    { name: 'Гибкость', value: 20 },
   ];
-
-  const getProgressColor = (value: number) => {
-    if (value > 50) return '#00cc00';
-    if (value > 20) return '#ffcc00';
-    return '#ff3333';
-  };
 
   return (
     <View style={styles.statsContainer}>
-      <Text style={styles.title}>Характеристики</Text>
+      <Text style={styles.title}>Все характеристики</Text>
       <ScrollView style={styles.statsScroll}>
         {stats.map((stat, index) => (
           <View key={index} style={styles.statItem}>
             <View style={styles.statHeader}>
               <Ionicons  size={20} color="#ff9f43" />
               <Text style={styles.statLabel}>{stat.name}:</Text>
-            </View>
-            <View style={styles.progressBarContainer}>
-              <View style={[styles.progressBar, { width: `${stat.value}%`, backgroundColor: getProgressColor(stat.value) }]} />
             </View>
             <Text style={styles.statValue}>{stat.value}</Text>
             <TouchableOpacity style={styles.upgradeButton}>
