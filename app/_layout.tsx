@@ -2,22 +2,26 @@
 import { Stack } from 'expo-router';
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import GlobalStyles from './components/GlobalStyles';
 import ProfileElement from './components/ProfileElement/ProfileElement';
-
-
 
 export default function Layout() {
   return (
+    <>
+      <GlobalStyles />
       <Stack
         screenOptions={{
-          header: () => <ProfileElement label={'Label'}/>, // Шапка для всех страниц
+          header: () => <ProfileElement />,
           headerStyle: styles.headerStyle
         }}
       >
-        <Stack.Screen name="/" options={{ title: 'Главная' }} />
-        <Stack.Screen name="screens/CharacterScreen" options={{ title: 'Персонаж' }} />
-        {/* Другие маршруты */}
+        <Stack.Screen name="index" options={{ title: "Главная" }} />
+        <Stack.Screen name="screens/CharacterScreen" options={{ title: "Персонаж" }} />
+        <Stack.Screen name="screens/HeroPathScreen" options={{ title: "Путь Героя" }} />
+        <Stack.Screen name="screens/LifeWheelScreen" options={{ title: "Колесо Жизни" }} />
+        <Stack.Screen name="screens/QuestPage" options={{ title: "Квесты" }} />
       </Stack>
+    </>
   );
 }
 

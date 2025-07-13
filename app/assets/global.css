@@ -1,0 +1,55 @@
+/* Reset overflow for all possible containers */
+/* Override Expo's inline styles */
+body {
+    margin: initial !important;
+    overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    height: auto !important;
+}
+
+/* Override Expo's reset styles specifically */
+#root, body, html {
+    height: auto !important;
+}
+
+body {
+    overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+}
+
+#root {
+    display: block !important;
+}
+
+html {
+    overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+}
+
+#root {
+    overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+}
+
+/* Additional selectors that might be set by React Native Web */
+[data-reactroot] {
+    overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+}
+
+/* Override any potential React Native Web styles */
+* {
+    box-sizing: border-box;
+}
+
+/* Ensure no overflow hidden is applied */
+body, html, #root, [data-reactroot], .expo-root, #expo-reset {
+    overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+}

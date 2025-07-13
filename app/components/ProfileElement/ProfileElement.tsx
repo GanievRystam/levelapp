@@ -1,68 +1,68 @@
 import { Link } from 'expo-router';
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { Animated, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Sidebar from "../Sidebar/Sidebar";
 
 type ProfileElementProps = {
-    label: string
+  label?: string
 }
 
-function ProfileElement({label}: ProfileElementProps) {
- const [isMenuOpen, setIsMenuOpen] = useState(false); // Извлекаем значение из useState
+function ProfileElement({ label }: ProfileElementProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Извлекаем значение из useState
   const menuWidth = useState(new Animated.Value(0))[0];
   console.log('menuWidth', menuWidth)
   console.log('isMenuOpen', isMenuOpen)
   useEffect(() => {
-      Animated.timing(menuWidth, {
-        toValue: isMenuOpen ? 0 : -300 ,
-        duration: 300,
-        useNativeDriver: false,
-      }).start();
-    }, [isMenuOpen, menuWidth]);
+    Animated.timing(menuWidth, {
+      toValue: isMenuOpen ? 0 : -300,
+      duration: 300,
+      useNativeDriver: false,
+    }).start();
+  }, [isMenuOpen, menuWidth]);
 
   const handleImagePress = () => {
     setIsMenuOpen(!isMenuOpen); // Переключаем состояние
   };
-    return (
+  return (
     <>
-        <View style={styles.profile}>
-            <TouchableOpacity onPress={handleImagePress}>
-            <Image
-                source={{ uri: 'https://i.ibb.co/sjF3y9z/avatar.png' }}
-                style={styles.avatar}
-            />
-            </TouchableOpacity>
-            <View>
-                <Text style={styles.name}>Akira Yamada</Text>
-                <Text style={styles.level}>Level 23</Text>
-            </View>
-             <View style={styles.navButtons}>
-          <Link href="/" asChild>
-          <TouchableOpacity style={styles.navButton}>
-            <Text style={styles.navText}>Главная</Text>
-          </TouchableOpacity>
-        </Link>
-        <Link href="/" asChild>
-          <TouchableOpacity style={styles.navButton}>
-            <Text style={styles.navText}>Путь Героя</Text>
-          </TouchableOpacity>
-        </Link>
-        <Link href="/screens/CharacterScreen" asChild>
-          <TouchableOpacity style={styles.navButton}>
-            <Text style={styles.navText}>Персонаж</Text>
-          </TouchableOpacity>
-        </Link>
-      </View>
+      <View style={styles.profile}>
+        <TouchableOpacity onPress={handleImagePress}>
+          <Image
+            source={{ uri: 'https://i.ibb.co/sjF3y9z/avatar.png' }}
+            style={styles.avatar}
+          />
+        </TouchableOpacity>
+        <View>
+          <Text style={styles.name}>Akira Yamada</Text>
+          <Text style={styles.level}>Level 23</Text>
         </View>
-       
-        <Sidebar openClose = {handleImagePress} menuWidth={menuWidth}/>
-        
+        <View style={styles.navButtons}>
+          <Link href="/" asChild>
+            <TouchableOpacity style={styles.navButton}>
+              <Text style={styles.navText}>Главная</Text>
+            </TouchableOpacity>
+          </Link>
+          {/* <Link href="/" asChild>
+            <TouchableOpacity style={styles.navButton}>
+              <Text style={styles.navText}>Путь Героя</Text>
+            </TouchableOpacity>
+          </Link> */}
+          <Link href="/screens/CharacterScreen" asChild>
+            <TouchableOpacity style={styles.navButton}>
+              <Text style={styles.navText}>Персонаж</Text>
+            </TouchableOpacity>
+          </Link>
+        </View>
+      </View>
+
+      <Sidebar openClose={handleImagePress} menuWidth={menuWidth} />
+
     </>
   );
 }
 const styles = StyleSheet.create({
   profile: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
     backgroundColor: '#1a1a2e', // Темный фон, как в sidebar
     padding: 16,
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   navButtons: {
     flexDirection: 'row',
-    marginLeft: 'auto', // Сдвигает кнопки вправо
+    marginTop: 10, // Сдвигает кнопки вправо
   },
   navButton: {
     padding: 8,

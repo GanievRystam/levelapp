@@ -8,7 +8,7 @@ type Sphere = {
   label: string;
   stats: { name: string; value: number }[];
   icon: string;
-  quests?: { title: string; description:string, completed: boolean }[];
+  quests?: { title: string; description:string, completed: boolean, status:string, reward:number }[];
   habits?: { title: string; description:string, frequency: string }[];
 };
 const spheres: Sphere[] = [
@@ -22,9 +22,9 @@ const spheres: Sphere[] = [
       { name: 'Решительность', value: 40 },
     ],
     quests: [
-      { title: 'Изучить новую тему', description: "Найти что-то новое в своей жизни", completed: false },
-      { title: 'Пройти онлайн-курс', description: "Пройти новый кус", completed: true },
-      { title: 'Посетить мастер-класс', description: "Найти и пройти мастер класс", completed: false },
+      { title: 'Изучить новую тему', description: "Найти что-то новое в своей жизни", completed: false, status:"В процессе", reward: 1000 },
+      { title: 'Пройти онлайн-курс', description: "Пройти новый кус", completed: true, status:"Завершён", reward: 250 },
+      { title: 'Посетить мастер-класс', description: "Найти и пройти мастер класс", completed: false, status:"Ждёт героя", reward: 350 },
     ],
     habits: [
       { title: 'Чтение книг', description:" 212", frequency: 'ежедневно' },
@@ -34,7 +34,7 @@ const spheres: Sphere[] = [
   },
   {
     id: 'intellect',
-    icon: 'brain-outline',
+    icon: 'bulb-outline',
     label: 'Интеллект',
     stats: [
       { name: 'Память', value: 60 },
@@ -83,18 +83,21 @@ function HomeScreen() {
         
       <View style={styles.statsContainer}>
         {currentSphere.stats.map((stat, index) => (
-          <ProgressSkill stat={stat} index={index}/>
+          <ProgressSkill key={`stat-${stat.name}-${index}`} stat={stat} index={index}/>
         ))}
       </View>
      
        <Text style={styles.sectionTitle}>Квесты</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.questScroll}>
         {currentSphere.quests?.map((quest, index) => (
-          <Quest
-            key={index}
+         <Quest
+            key={`quest-${quest.title}-${index}`}
+            index={index}
             name={quest.title}
             description={quest.description}
-            completed={quest.completed}
+            completed={quest.completed.toString()}
+            reward={quest.reward.toString()}
+            status={quest.status}
           />
         ))}
       </ScrollView>

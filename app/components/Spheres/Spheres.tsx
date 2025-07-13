@@ -50,10 +50,7 @@ const styles = StyleSheet.create({
   },
   activeTab: {
     backgroundColor: '#ff6b6b', // Яркий акцент для активной вкладки
-    shadowColor: '#ff9f43', // Тень для эффекта
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
+    boxShadow: '0 2px 4px rgba(255, 159, 67, 0.3)', // Тень для эффекта
     elevation: 5,
   },
   inactiveTab: {

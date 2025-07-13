@@ -2,15 +2,18 @@ import { useRouter } from "expo-router";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 type QuestProps = {
-    key: number;
+    index: number;
     name: string;
     description: string;
-    completed: boolean;
+    reward: string;
+    completed: string;
+    status: string
 }
-const Quest = ({key, name, description, completed}:QuestProps) => {
+const Quest = ({index, name, description, completed, status, reward}:QuestProps) => {
   const router = useRouter();
+  console.log("key", index);
     return(
-        <View key={key} style={styles.questCard}>
+        <View key={index} style={styles.questCard}>
             <Image
             source={{ uri: 'https://i.ibb.co/sjF3y9z/avatar.png' }}
             style={styles.avatar}
@@ -20,11 +23,11 @@ const Quest = ({key, name, description, completed}:QuestProps) => {
                 <Text style={styles.questDescription}>{description}</Text>
                 <View style={{ marginTop: 10 }}>
                     <Text style={styles.questDescription}>Статус: В процессе</Text>
-                    <Text style={styles.questDescription}>Награда: 1000 опыта</Text>    
+                    <Text style={styles.questDescription}>Награда: {reward} опыта</Text>    
                 </View>
-                <TouchableOpacity>
-                  <Text style={styles.questButtonText} onPress={() => router.push({pathname: '/screens/QuestPage', params: {key, name, description}, })}>Открыть квест</Text>
-              </TouchableOpacity>
+                <TouchableOpacity onPress={() => router.push({pathname: '/screens/QuestPage', params: {key: index.toString(), name, description, completed: completed.toString(), status, reward}, })}>
+                  <Text style={styles.questButtonText}>Открыть квест</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )
@@ -42,10 +45,7 @@ questCard: {
     borderWidth: 2,
     flexDirection: 'column',
     borderColor: '#ff6b6b', // Яркая красная рамка
-    shadowColor: '#ff9f43',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
+    boxShadow: '0 2px 4px rgba(255, 159, 67, 0.3)',
     elevation: 5,
   },
   questButtonText: {

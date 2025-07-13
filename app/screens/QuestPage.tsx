@@ -6,18 +6,20 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const QuestPage = () => {
   // Получаем параметры из URL (например, name, description, reward)
-  const { name, description, reward, status } = useLocalSearchParams<{
+  const { key, name, description, completed, status, reward } = useLocalSearchParams<{
+    key?:string;
     name?: string;
     description?: string;
-    reward?: string;
-    status?: string;
+    completed?: string;
+    status: string
+    reward:string
   }>();
-
+  console.log('status', status);
   // Значения по умолчанию, если параметры не переданы
   const questName = name || 'Неизвестный квест';
   const questDescription = description || 'Описание квеста отсутствует.';
   const questReward = reward || '100 опыта';
-  const questStatus = status || 'В процессе';
+  const questStatus = status || "Неизвестен";
 
   return (
     <View style={styles.container}>
@@ -40,7 +42,7 @@ const QuestPage = () => {
         </View>
       </View>
       <TouchableOpacity style={styles.completeButton} onPress={() => {/* Логика завершения */}}>
-        <Text style={styles.completeText}>Завершить</Text>
+        <Text style={styles.completeText}>{completed === "true"? 'Завершенно': 'Завершить'}</Text>
       </TouchableOpacity>
     </View>
   );

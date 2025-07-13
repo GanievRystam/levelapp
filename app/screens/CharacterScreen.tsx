@@ -3,7 +3,6 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import CharacterWindow from '../components/CharacterWindow';
 import StatsPanel from '../components/StatsPanel';
-import WheelOfLife from '../components/WheelOfLife/WheelOfLife';
 
 function CharacterScreen() {
 
@@ -12,7 +11,6 @@ function CharacterScreen() {
     <View>
       <CharacterWindow />
       <StatsPanel />
-        <WheelOfLife />
       </View>
     )
 }
