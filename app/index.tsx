@@ -107,7 +107,6 @@ function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#1a1a2e', // Темный фон, как в sidebar
     padding: 16,
   },

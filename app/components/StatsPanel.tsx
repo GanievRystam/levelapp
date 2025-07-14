@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
+    justifyContent:"space-between"
   },
   statHeader: {
     flexDirection: 'row',

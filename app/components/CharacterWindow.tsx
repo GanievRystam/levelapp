@@ -353,24 +353,20 @@ const renderWheel = (wheelData: WheelSegment[], size = 300) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#1e1e2e',
     padding: isSmallScreen ? 10 : 20
   },
 
   // Мобильная вёрстка
   mobileContainer: {
-    flex: 1,
     paddingBottom: 20,
   },
 
   // Десктопная вёрстка
   leftColumn: {
-    flex: 1,
     paddingRight: 15
   },
   rightColumn: {
-    flex: 1,
     paddingLeft: 15,
     alignItems: 'center'
   },
